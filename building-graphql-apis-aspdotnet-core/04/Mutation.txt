@@ -1,0 +1,12 @@
+mutation ($review: reviewInput!){
+  createReview(review:$review) {id title}
+}
+
+
+Variables
+{
+  "review": {
+    "title": "my review",
+    "productId": 1
+  }  
+}

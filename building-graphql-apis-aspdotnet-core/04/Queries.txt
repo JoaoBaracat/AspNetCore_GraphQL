@@ -1,0 +1,42 @@
+query allWithPrice($showPrice: Boolean = false) {
+  products {
+    ...comparisonFields
+    price @include(if: $showPrice)
+    skip: price @skip (if: $showPrice)
+  }
+}
+
+query all {
+  products {
+    ...comparisonFields
+  }
+}
+
+query ids($productId2: ID!) {
+  p1: product(id: 1) {
+    ...comparisonFields
+  }
+  p2: product(id: $productId2) {
+    ...comparisonFields
+  }
+}
+
+fragment comparisonFields on ProductType {
+  name
+  id
+  reviews {
+    review
+  }
+}
+
+
+
+
+
+
+
+
+variables
+{"productId2": 2,
+  "showPrice": false
+}
